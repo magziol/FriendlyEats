@@ -206,9 +206,12 @@ class MainFragment : Fragment(),
         if (filters.hasSortBy()) {
             query = query.orderBy(filters.sortBy.toString(), filters.sortDirection)
         }
+
         // Limit items
         query = query.limit(LIMIT.toLong())
 
+        // Update the query
+        adapter?.setQuery(query)
 
         // Set header
         binding.textCurrentSearch.text = HtmlCompat.fromHtml(
